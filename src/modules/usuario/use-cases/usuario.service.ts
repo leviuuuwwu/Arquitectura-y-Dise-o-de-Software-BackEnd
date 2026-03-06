@@ -11,7 +11,6 @@ export class UsuarioService {
   ) {}
 
   findAll(): Promise<Usuario[]> {
-    // El relations: ['role'] hace el JOIN con la tabla de roles
     return this.usuarioRepository.find({ relations: ['role'] });
   }
 

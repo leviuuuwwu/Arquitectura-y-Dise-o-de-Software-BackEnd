@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body } from '@nestjs/common';
 import { CategoriaEventoService } from '../use-cases/categoria-evento.service';
 import { CategoriaEvento } from '../entities/categoria-evento.entity';
 
-@Controller('categorias') // Tu endpoint será http://localhost:3000/categorias
+@Controller('categorias') // endpoint: http://localhost:3000/categorias
 export class CategoriaEventoController {
   constructor(private readonly categoriaService: CategoriaEventoService) {}
 

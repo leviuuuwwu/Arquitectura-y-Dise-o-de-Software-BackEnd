@@ -7,12 +7,10 @@ export class RegistroAsistencia {
   @PrimaryGeneratedColumn('uuid')
   register_id: string;
 
-  // Llave foránea hacia Usuario (El asistente)
   @ManyToOne(() => Usuario)
   @JoinColumn({ name: 'user_id' })
   user: Usuario;
 
-  // Llave foránea hacia Evento
   @ManyToOne(() => Evento)
   @JoinColumn({ name: 'event_id' })
   event: Evento;

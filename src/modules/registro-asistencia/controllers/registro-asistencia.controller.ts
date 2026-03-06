@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body } from '@nestjs/common';
 import { RegistroAsistenciaService } from '../use-cases/registro-asistencia.service';
 import { RegistroAsistencia } from '../entitites/registro-asistencia.entity';
 
-@Controller('registros')
+@Controller('registros') // endpoint: http://localhost:3000/registros
 export class RegistroAsistenciaController {
   constructor(private readonly registroService: RegistroAsistenciaService) {}
 

@@ -11,7 +11,6 @@ export class EventoService {
   ) {}
 
   findAll(): Promise<Evento[]> {
-    // Pedimos que nos traiga las 3 relaciones completas
     return this.eventoRepository.find({ 
       relations: ['category', 'organizer', 'company'] 
     });

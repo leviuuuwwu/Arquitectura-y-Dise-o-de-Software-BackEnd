@@ -9,7 +9,6 @@ export class Empresa {
   @Column({ type: 'varchar', length: 100 })
   company_name: string;
 
-  // Relación con la tabla Usuario (el organizador)
   @ManyToOne(() => Usuario)
   @JoinColumn({ name: 'organizer_id' })
   organizer: Usuario;

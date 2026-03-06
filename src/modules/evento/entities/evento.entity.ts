@@ -3,7 +3,7 @@ import { CategoriaEvento } from '../../categoria-evento/entities/categoria-event
 import { Usuario } from '../../usuario/entities/usuario.entity';
 import { Empresa } from '../../empresa/entities/empresa.entity';
 
-@Entity('evento') // Debe coincidir con el nombre de la tabla en postgres
+@Entity('evento') 
 export class Evento {
   @PrimaryGeneratedColumn('uuid')
   event_id: string;
@@ -11,7 +11,6 @@ export class Evento {
   @Column({ type: 'varchar', length: 100 })
   event_name: string;
 
-  // 1. Llave foránea hacia Categoria_Evento
   @ManyToOne(() => CategoriaEvento)
   @JoinColumn({ name: 'event_category' })
   category: CategoriaEvento;
@@ -31,12 +30,10 @@ export class Evento {
   @Column({ type: 'int', nullable: true })
   max_attendanse: number; // Alejo se equivocó en el SQL, lo dejo así porque sino el TypeORM tronará
 
-  // 2. Llave foránea hacia Usuario
   @ManyToOne(() => Usuario)
   @JoinColumn({ name: 'organizer_id' })
   organizer: Usuario;
 
-  // 3. Llave foránea hacia Empresa
   @ManyToOne(() => Empresa)
   @JoinColumn({ name: 'company_id' })
   company: Empresa;

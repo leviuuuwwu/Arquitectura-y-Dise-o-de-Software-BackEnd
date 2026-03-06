@@ -3,7 +3,7 @@ import { Role } from '../../roles/entities/role.entity';
 
 @Entity('usuario')
 export class Usuario {
-  @PrimaryGeneratedColumn('uuid') // Esto genera el UUID automático
+  @PrimaryGeneratedColumn('uuid') 
   user_id: string;
 
   @Column({ type: 'varchar', length: 100 })
@@ -15,14 +15,13 @@ export class Usuario {
   @Column({ type: 'varchar', length: 150 })
   user_password: string;
 
-  // Así se define la llave foránea en TypeORM
   @ManyToOne(() => Role)
   @JoinColumn({ name: 'role_id' })
   role: Role;
 
-  @CreateDateColumn() // Toma el CURRENT_TIMESTAMP automático
+  @CreateDateColumn()
   created_at: Date;
 
-  @UpdateDateColumn() // Se actualiza solo cuando editas el registro
+  @UpdateDateColumn() 
   updated_at: Date;
 }
