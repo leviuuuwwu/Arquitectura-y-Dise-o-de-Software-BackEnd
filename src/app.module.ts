@@ -6,6 +6,8 @@ import { UsuarioModule } from './modules/usuario/usuario.module';
 import { EmpresaModule } from './modules/empresa/empresa.module';
 import { EventoModule } from './modules/evento/evento.module';
 import { RegistroAsistenciaModule } from './modules/registro-asistencia/registro-asistencia.module';
+import { APP_GUARD } from '@nestjs/core'; 
+import { JwtGuard } from './modules/usuario/guards/jwt.guard';
 
 @Module({
   imports: [
@@ -25,6 +27,12 @@ import { RegistroAsistenciaModule } from './modules/registro-asistencia/registro
     EmpresaModule,
     EventoModule,
     RegistroAsistenciaModule,
+  ],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: JwtGuard,
+    },
   ],
 })
 export class AppModule {}

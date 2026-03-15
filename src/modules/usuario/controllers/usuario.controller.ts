@@ -1,6 +1,7 @@
 import { Controller, Get, Post, Body, Param, Patch, Delete, HttpCode, HttpStatus, UnauthorizedException } from '@nestjs/common';
 import { UsuarioService } from '../use-cases/usuario.service';
 import { Usuario } from '../entities/usuario.entity';
+import { Public } from '../decorators/public.decorator';
 
 @Controller('usuarios') // endpoint: http://localhost:3000/usuarios
 export class UsuarioController {
@@ -11,11 +12,13 @@ export class UsuarioController {
     return this.usuarioService.findAll();
   }
 
+  @Public() // Este endpoint no requiere autenticación
   @Post()
   create(@Body() usuario: Usuario) {
     return this.usuarioService.create(usuario);
   }
 
+  @Public() // Este endpoint no requiere autenticación
   // Endpoint de Login
   @Post('login')
   @HttpCode(HttpStatus.OK)
