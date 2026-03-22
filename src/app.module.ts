@@ -16,7 +16,7 @@ import { JwtGuard } from './modules/usuario/guards/jwt.guard';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'tgmf4', 
+      password: 'Echeverria16', 
       database: 'proyectocatedra',
       autoLoadEntities: true,
       synchronize: true,
