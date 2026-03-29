@@ -13,11 +13,11 @@ import { JwtGuard } from './modules/usuario/guards/jwt.guard';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
+      host: process.env.DB_HOST || 'localhost', 
       port: 5432,
-      username: 'postgres',
-      password: 'tgmf4', 
-      database: 'proyectocatedra',
+      username: process.env.DB_USER || 'postgres',
+      password: process.env.DB_PASSWORD || 'suser',
+      database: process.env.DB_NAME || 'proyectocatedra',
       autoLoadEntities: true,
       synchronize: true,
     }),

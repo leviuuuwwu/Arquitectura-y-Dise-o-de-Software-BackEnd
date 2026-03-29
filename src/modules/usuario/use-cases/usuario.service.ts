@@ -17,8 +17,9 @@ export class UsuarioService {
     return this.usuarioRepository.find({ relations: ['role'] });
   }
 
-  create(usuario: Usuario): Promise<Usuario> {
-    return this.usuarioRepository.save(usuario);
+  async create(usuario: Usuario): Promise<Usuario> {
+    const nuevoUsuario = this.usuarioRepository.create(usuario);
+    return this.usuarioRepository.save(nuevoUsuario);
   }
 
   async login(email: string, pass: string): Promise<any> {
@@ -55,8 +56,9 @@ export class UsuarioService {
   }
 
   async update(id: string, updateData: Partial<Usuario>): Promise<Usuario> {
-    await this.usuarioRepository.update(id, updateData);
-    return this.findOne(id); 
+    const usuario = await this.findOne(id);
+    Object.assign(usuario, updateData);
+    return this.usuarioRepository.save(usuario); 
   }
 
   async remove(id: string): Promise<void> {
