@@ -18,9 +18,14 @@ export class UsuarioService {
   }
 
   async create(usuario: Usuario): Promise<Usuario> {
+<<<<<<< HEAD
     const hashedPassword = await bcrypt.hash(usuario.user_password, 10);
     usuario.user_password = hashedPassword;
     return this.usuarioRepository.save(usuario);
+=======
+    const nuevoUsuario = this.usuarioRepository.create(usuario);
+    return this.usuarioRepository.save(nuevoUsuario);
+>>>>>>> e23dad7fd8f57fd75e0088706eedf9a6d8564d5a
   }
 
   async login(email: string, pass: string): Promise<any> {
@@ -57,8 +62,9 @@ export class UsuarioService {
   }
 
   async update(id: string, updateData: Partial<Usuario>): Promise<Usuario> {
-    await this.usuarioRepository.update(id, updateData);
-    return this.findOne(id); 
+    const usuario = await this.findOne(id);
+    Object.assign(usuario, updateData);
+    return this.usuarioRepository.save(usuario); 
   }
 
   async remove(id: string): Promise<void> {
