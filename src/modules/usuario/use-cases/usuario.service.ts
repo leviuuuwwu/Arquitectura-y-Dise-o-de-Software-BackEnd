@@ -17,7 +17,9 @@ export class UsuarioService {
     return this.usuarioRepository.find({ relations: ['role'] });
   }
 
-  create(usuario: Usuario): Promise<Usuario> {
+  async create(usuario: Usuario): Promise<Usuario> {
+    const hashedPassword = await bcrypt.hash(usuario.user_password, 10);
+    usuario.user_password = hashedPassword;
     return this.usuarioRepository.save(usuario);
   }
 
