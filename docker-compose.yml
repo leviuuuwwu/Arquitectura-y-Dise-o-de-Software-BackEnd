@@ -1,13 +1,13 @@
 version: '3.8'
 services:
   db:
-    image: postgres:15
+    image: postgres:15.3
     container_name: eventos_db
     restart: always
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: suser
-      POSTGRES_DB: ProyectoCatedra
+      POSTGRES_PASSWORD: tgmf4
+      POSTGRES_DB: proyectocatedra
     ports:
       - '5433:5432'
     volumes:
