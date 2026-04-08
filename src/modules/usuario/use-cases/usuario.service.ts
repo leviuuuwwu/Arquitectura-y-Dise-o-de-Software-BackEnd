@@ -8,13 +8,14 @@ export class UsuarioService {
   constructor(
     @InjectRepository(Usuario)
     private usuarioRepository: Repository<Usuario>,
-  ) {}
+  ) { }
 
   findAll(): Promise<Usuario[]> {
     return this.usuarioRepository.find({ relations: ['role'] });
   }
 
-  create(usuario: Usuario): Promise<Usuario> {
-    return this.usuarioRepository.save(usuario);
+  async create(usuario: Usuario): Promise<Usuario> {
+    const nuevoUsuario = this.usuarioRepository.create(usuario);
+    return this.usuarioRepository.save(nuevoUsuario);
   }
 }

@@ -12,9 +12,9 @@ import { RegistroAsistenciaModule } from './modules/registro-asistencia/registro
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
-      port: 5432,
+      port: 5433,
       username: 'postgres',
-      password: 'suser', 
+      password: 'suser',
       database: 'ProyectoCatedra',
       autoLoadEntities: true,
       synchronize: true,
@@ -27,4 +27,4 @@ import { RegistroAsistenciaModule } from './modules/registro-asistencia/registro
     RegistroAsistenciaModule,
   ],
 })
-export class AppModule {}
+export class AppModule { }
