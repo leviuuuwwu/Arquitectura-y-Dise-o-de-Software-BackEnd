@@ -18,9 +18,6 @@ export class UsuarioService {
   }
 
   async create(usuario: Usuario): Promise<Usuario> {
-    const hashedPassword = await bcrypt.hash(usuario.user_password, 10);
-    usuario.user_password = hashedPassword;
-
     const nuevoUsuario = this.usuarioRepository.create(usuario);
     return this.usuarioRepository.save(nuevoUsuario);
   }
@@ -31,6 +28,7 @@ export class UsuarioService {
       relations: ['role']
     });
 
+    // Validamos que el usuario exista y comparamos la contraseña con el hash
     if (user && await bcrypt.compare(pass, user.user_password)) {
       const payload = {
         sub: user.user_id,
